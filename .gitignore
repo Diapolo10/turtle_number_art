@@ -115,3 +115,6 @@ dmypy.json
 
 # Snyk
 .dccache
+
+# Project
+output/
