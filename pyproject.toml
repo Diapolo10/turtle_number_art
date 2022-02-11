@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "turtle_number_art"
+version = "0.1.0"
+description = ""
+authors = ["Lari Liuhamo <Diapolo10@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.931"
+pylint = "^2.12.2"
+flake8 = "^4.0.1"
+pyproject-flake8 = "^0.0.1-alpha.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
