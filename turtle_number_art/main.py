@@ -23,17 +23,21 @@ SCALE = 2
 if not OUTPUT_DIR.exists():
     OUTPUT_DIR.mkdir()
 
+
 def save_as_png(canvas, filename=None):
 
     if filename is None:
         filename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    canvas.postscript(file = OUTPUT_DIR / f'{filename}.eps')
+    temp_file = OUTPUT_DIR / f'{filename}.eps'
 
-    with Image.open(OUTPUT_DIR / f'{filename}.eps') as img:
+    canvas.postscript(file = temp_file)
+
+    with Image.open(temp_file) as img:
         img.save(OUTPUT_DIR / f'{filename}.png', 'png')
 
-    (OUTPUT_DIR / f'{filename}.eps').unlink()
+    temp_file.unlink()
+
 
 def digits(file: Path) -> Generator[int, None, None]:
     for digit in file.read_text(encoding='utf-8'):
@@ -41,9 +45,11 @@ def digits(file: Path) -> Generator[int, None, None]:
             continue
         yield int(digit)
 
+
 def base_n_angle(num: int, n: int=10):
     full_circle = 360 / n
     return num % n * full_circle
+
 
 def main():
     t = turtle.Turtle()
